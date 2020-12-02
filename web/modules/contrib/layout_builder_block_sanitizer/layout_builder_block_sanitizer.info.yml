@@ -1,0 +1,13 @@
+name: Layout Builder Block Sanitizer
+type: module
+description: Clean up Layout Builder layouts of non-existent blocks.
+# core: 8.x
+package: Custom
+dependencies:
+  - drupal:layout_builder
+
+# Information added by Drupal.org packaging script on 2019-05-22
+version: '8.x-1.0-alpha2'
+core: '8.x'
+project: 'layout_builder_block_sanitizer'
+datestamp: 1558562587

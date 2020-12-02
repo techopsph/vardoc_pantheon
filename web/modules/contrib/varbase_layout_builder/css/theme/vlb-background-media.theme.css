@@ -1,0 +1,42 @@
+.vlb-section {
+  display: block;
+  position: relative;
+}
+
+.vlb-section .background-media-wrapper {
+  overflow: hidden;
+  position: relative;
+}
+
+.vlb-section .background-media-wrapper > img.bg,
+.vlb-section .background-media-wrapper > picture.bg,
+.vlb-section .background-media-wrapper > video.bg {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  position: absolute;
+  z-index: 1;
+}
+
+.vlb-section .background-media-wrapper > iframe.bg {
+  width: 100vw;
+  min-height: 34vw;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  position: absolute;
+  z-index: 1;
+}
+
+.vlb-section .background-media-wrapper > :not(.bg) {
+  z-index: 2;
+  position: relative;
+}
+
+@media (max-width: 576px) {
+  .vlb-section .background-media-wrapper > iframe.bg {
+    width: 100%;
+    height: 100%;
+  }
+}

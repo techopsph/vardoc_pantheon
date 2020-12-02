@@ -1,0 +1,5 @@
+services:
+  varbase_layout_builder.route_alter:
+    class: Drupal\varbase_layout_builder\Routing\VLBRouteAlter
+    tags:
+    - { name: 'event_subscriber' }

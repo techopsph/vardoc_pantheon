@@ -1,0 +1,165 @@
+{
+  "name": "vardot/vardoc-project",
+  "description": "Vardoc Project",
+  "type": "project",
+  "license": "GPL-2.0-or-later",
+  "authors": [
+    {
+      "name": "Vardot",
+      "homepage": "https://www.drupal.org/vardot",
+      "role": "Maintainer"
+    }
+  ],
+  "support": {
+    "issues": "http://drupal.org/project/issues/vardoc",
+    "source": "http://cgit.drupalcode.org/vardoc"
+  },
+  "repositories": {
+    "drupal": {
+      "type": "composer",
+      "url": "https://packages.drupal.org/8"
+      },
+    "assets": {
+      "type": "composer",
+      "url": "https://asset-packagist.org"
+    },
+    "antennaio": {
+      "type": "package",
+      "package": {
+        "name": "antennaio/jquery-bar-rating",
+        "version": "1.2.2",
+        "type": "drupal-library",
+        "dist": {
+          "type": "zip",
+          "url": "https://github.com/antennaio/jquery-bar-rating/archive/v1.2.2.zip"
+        }
+      }
+    },
+    "composer-patches": {
+      "type": "vcs",
+      "url": "https://github.com/vardot/composer-patches"
+    }
+  },
+  "require": {
+    "composer/installers": "~1.0",
+    "oomphinc/composer-installers-extender": "~1.0",
+    "cweagans/composer-patches": "~1.0",
+    "drupal/core-composer-scaffold": "^8.8.0",
+    "drupal/core-project-message": "^8.8.0",
+    "drupal/drupal-library-installer-plugin": "^0.3",
+    "webflo/drupal-finder": "~1.0",
+    "webmozart/path-util": "~2.0",
+    "vardot/vardoc": "~4.0",
+    "vardot/varbase-updater": "~1.0"
+  },
+  "replace": {
+    "ajaxorg/ace-builds": "*"
+  },
+  "config": {
+    "bin-dir": "bin/",
+    "secure-http": false,
+    "optimize-autoloader": true,
+    "preferred-install": {
+      "drupal/core": "dist"
+    }
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "Varbase\\composer\\ScriptHandler::createRequiredFiles",
+      "Varbase\\composer\\ScriptHandler::removeGitDirectories"
+    ],
+    "post-update-cmd": [
+      "Varbase\\composer\\ScriptHandler::createRequiredFiles",
+      "Varbase\\composer\\ScriptHandler::removeGitDirectories"
+    ],
+    "post-drupal-scaffold-cmd": [
+      "Varbase\\composer\\ScriptHandler::postDrupalScaffoldProcedure",
+      "Vardoc\\composer\\ScriptHandler::postDrupalScaffoldSubProfileProcedure"
+    ]
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "conflict": {
+    "drupal/drupal": "*"
+  },
+  "extra": {
+    "drupal-scaffold": {
+      "allowed-packages": [
+        "drupal/core"
+      ],
+      "locations": {
+        "web-root": "web/"
+      }
+    },
+    "drupal-core-project-message": {
+        "include-keys": ["homepage", "support"],
+        "post-create-project-cmd-message": [
+            "<bg=blue;fg=white>                                                                                   </>",
+            "<bg=blue;fg=white>  Congratulations, you’ve installed the Vardoc Project codebase                    </>",
+            "<bg=blue;fg=white>  from the Vardot/vardoc-project template!                                         </>",
+            "<bg=blue;fg=white>                                                                                   </>",
+            "",
+            "<bg=yellow;fg=black>Next steps</>:",
+
+            "  * Install the site: https://www.drupal.org/docs/8/install",
+            "  * Read the user guide: https://docs.varbase.vardot.com",
+            "  * Get support: https://www.vardot.com/en/form/get-support-varbase",
+            "  * Join Our Slack Team for Feedback and Support:",
+            "      http://slack.varbase.vardot.com",
+            "  * Remove the plugin that prints this message:",
+            "      composer remove drupal/core-project-message"
+        ]
+    },
+    "_readme": [
+      "NOTICE: We're now using composer patches from Vardot repository to suggest",
+      "several fixes and better handling of patches in your Drupal project.",
+      "You'll notice that we have included (https://github.com/vardot/composer-patches)",
+      "in this composer.json repositories. This will replace the original",
+      "library (cweagans/composer-patches) with our own from (vardot/composer-patches).",
+      "See https://github.com/cweagans/composer-patches/pull/243 and more details",
+      "on our changes on the composer-patches package. Once our changes get merged,",
+      "we will revert to using (cweagans/composer-patches) without this override."
+    ],
+    "installer-types": [
+      "bower-asset",
+      "npm-asset"
+    ],
+    "installer-paths": {
+      "web/core": ["type:drupal-core"],
+      "web/profiles/{$name}": ["type:drupal-profile"],
+      "web/modules/contrib/{$name}": ["type:drupal-module"],
+      "web/themes/contrib/{$name}": ["type:drupal-theme"],
+      "web/libraries/slick": ["npm-asset/slick-carousel"],
+      "web/libraries/ace": ["npm-asset/ace-builds"],
+      "web/libraries/masonry": ["npm-asset/masonry-layout"],
+      "web/libraries/{$name}": [
+        "type:drupal-library",
+        "type:bower-asset",
+        "type:npm-asset"
+      ],
+      "web/modules/custom/{$name}": ["type:drupal-custom-module"],
+      "web/themes/custom/{$name}": ["type:drupal-custom-theme"],
+      "drush/contrib/{$name}": ["type:drupal-drush"]
+    },
+    "drupal-libraries": {
+      "library-directory": "web/libraries",
+      "libraries": [
+        {"name": "dropzone","package": "npm-asset/dropzone"},
+        {"name": "blazy", "package": "npm-asset/blazy"},
+        {"name": "slick", "package": "npm-asset/slick-carousel"},
+        {"name": "ace", "package": "npm-asset/ace-builds"},
+        {"name": "chartjs", "package": "bower-asset/chartjs"},
+        {"name": "c3","package": "bower-asset/c3"},
+        {"name": "d3", "package": "bower-asset/d3"},
+        {"name": "masonry", "package": "npm-asset/masonry-layout"},
+        {"name": "imagesloaded", "package": "npm-asset/imagesloaded"},
+        {"name": "swagger-ui", "package": "swagger-api/swagger-ui"}
+      ]
+    },
+    "enable-patching": true,
+    "composer-exit-on-patch-failure": true,
+    "patchLevel": {
+       "drupal/core": "-p2"
+    }
+  }
+}
