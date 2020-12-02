@@ -88,7 +88,7 @@
         "drupal/core"
       ],
       "locations": {
-        "web-root": "web/"
+        "web-root": "docroot/"
       }
     },
     "drupal-core-project-message": {
@@ -125,24 +125,24 @@
       "npm-asset"
     ],
     "installer-paths": {
-      "web/core": ["type:drupal-core"],
-      "web/profiles/{$name}": ["type:drupal-profile"],
-      "web/modules/contrib/{$name}": ["type:drupal-module"],
-      "web/themes/contrib/{$name}": ["type:drupal-theme"],
-      "web/libraries/slick": ["npm-asset/slick-carousel"],
-      "web/libraries/ace": ["npm-asset/ace-builds"],
-      "web/libraries/masonry": ["npm-asset/masonry-layout"],
-      "web/libraries/{$name}": [
+      "docroot/core": ["type:drupal-core"],
+      "docroot/profiles/{$name}": ["type:drupal-profile"],
+      "docroot/modules/contrib/{$name}": ["type:drupal-module"],
+      "docroot/themes/contrib/{$name}": ["type:drupal-theme"],
+      "docroot/libraries/slick": ["npm-asset/slick-carousel"],
+      "docroot/libraries/ace": ["npm-asset/ace-builds"],
+      "docroot/libraries/masonry": ["npm-asset/masonry-layout"],
+      "docroot/libraries/{$name}": [
         "type:drupal-library",
         "type:bower-asset",
         "type:npm-asset"
       ],
-      "web/modules/custom/{$name}": ["type:drupal-custom-module"],
-      "web/themes/custom/{$name}": ["type:drupal-custom-theme"],
+      "docroot/modules/custom/{$name}": ["type:drupal-custom-module"],
+      "docroot/themes/custom/{$name}": ["type:drupal-custom-theme"],
       "drush/contrib/{$name}": ["type:drupal-drush"]
     },
     "drupal-libraries": {
-      "library-directory": "web/libraries",
+      "library-directory": "docroot/libraries",
       "libraries": [
         {"name": "dropzone","package": "npm-asset/dropzone"},
         {"name": "blazy", "package": "npm-asset/blazy"},
